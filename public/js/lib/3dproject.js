@@ -20,6 +20,24 @@ _3DProject.prototype.setContainer = function(containerId){
 	}
 };
 
-_3DProject.prototype.init = function(){
+_3DProject.prototype.pre_init = function(){
+	if(this.container == null){
+		throw new Error("first container must be set");
+	}else{
+		this.renderer = new THREE.WebGLRenderer({antialias:true});
+		this.renderer.setSize(this.container.offSetWidth,this.container.offSetHeight);
+		this.container.appendChild(this.renderer.domElement);
+		
+		this.scene = new THREE.Scene();
+		
+		this.camera = new THREE.PerspectiveCamera(45,this.container.offSetWidth/this.container.offSetHeight,1,4000);
+		this.camera.position.set(0,0,3);
+		this.scene.add(this.camera);
+	}
+};
 
+_3DProject.prototype.simple_light = function(){
+	var light = new THREE.DirectionalLight(0xffffff,1.5);
+	light.position.set(0,0,1);
+	this.scene.add(light);
 };
