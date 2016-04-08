@@ -1,11 +1,11 @@
 <script src="/js/three/example21.js"></script>
+<script src="/js/three/example22.js"></script>
 <script>
-          
-    function onLoad() {
-	example21();
-            }
-
-
+	function onLoad() {
+	var game = new example22("container");
+console.log(game);	
+	//game.init();	
+	}
 </script>
 <div class="row">
 	<div class="col-md-12">
@@ -14,6 +14,10 @@
 </div>
 <script>
 $(document).ready(function(){
-onLoad();
+	try {
+		onLoad();
+	}catch(e){
+		console.log(e);
+	}
 });
 </script>
