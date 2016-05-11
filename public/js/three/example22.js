@@ -27,18 +27,18 @@ example22.prototype.play = function(){
 	//this.renderer.render( this.scene, this.camera );
 };
 
-example22.prototype.run = function()
+example22.prototype.run = function(evt)
 {
+	console.log("her");
 	console.log(this.renderer);	
+	console.log(evt);
 	this.renderer.render(this.scene,this.camera);
 	if (this.animating)
 	{
 		this.cube.rotation.y -= 0.01;
 	}
-	requestAnimationFrame(function(){
-						  game.run();
-						  });
-	/*
+	
+	
 	// Render the scene
 	this.renderer.render( this.scene, this.camera );
 	
@@ -49,7 +49,7 @@ example22.prototype.run = function()
 	}
 	
 	// Ask for another frame
-	requestAnimationFrame(this.run);*/	
+	requestAnimationFrame(this.run);	
 };
 
 example22.prototype.addMouseHandler = function()

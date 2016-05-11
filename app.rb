@@ -9,3 +9,7 @@ end
 get '/peach_three' do
   erb :peach_three, :layout => :united_layout
 end
+
+get '/tester' do
+  File.read(File.join('public', 'tester.html'))
+end

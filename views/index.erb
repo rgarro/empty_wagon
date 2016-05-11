@@ -1,3 +1,76 @@
+<style>
+#experiment {
+  -webkit-perspective: 800px;
+  -webkit-perspective-origin: 50% 200px;
+  -moz-perspective: 800px;
+  -moz-perspective-origin: 50% 200px;
+  perspective: 800px;
+  perspective-origin: 50% 200px;
+}
+
+#cube {
+  position: relative;
+  margin: 100px auto;
+  height: 400px;
+  width: 400px;
+  -webkit-transition: -webkit-transform 2s linear;
+  -webkit-transform-style: preserve-3d;
+  -moz-transition: -moz-transform 2s linear;
+  -moz-transform-style: preserve-3d;
+  transition: transform 2s linear;
+  transform-style: preserve-3d;
+}
+
+.face {
+  position: absolute;
+  height: 360px;
+  width: 360px;
+  padding: 20px;
+  background-color: rgba(50, 50, 50, 0.7);
+  font-size: 27px;
+  line-height: 1em;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 3px;
+}
+
+#cube .one  {
+  -webkit-transform: rotateX(90deg) translateZ(200px);
+  -moz-transform: rotateX(90deg) translateZ(200px);
+  transform: rotateX(90deg) translateZ(200px);
+}
+
+#cube .two {
+  -webkit-transform: translateZ(200px);
+  -moz-transform: translateZ(200px);
+  transform: translateZ(200px);
+}
+
+#cube .three {
+  -webkit-transform: rotateY(90deg) translateZ(200px);
+  -moz-transform: rotateY(90deg) translateZ(200px);
+  transform: rotateY(90deg) translateZ(200px);
+}
+
+#cube .four {
+  -webkit-transform: rotateY(180deg) translateZ(200px);
+  -moz-transform: rotateY(180deg) translateZ(200px);
+  transform: rotateY(180deg) translateZ(200px);
+}
+
+#cube .five {
+  -webkit-transform: rotateY(-90deg) translateZ(200px);
+  -moz-transform: rotateY(-90deg) translateZ(200px);
+  transform: rotateY(-90deg) translateZ(200px);
+}
+
+#cube .six {
+  -webkit-transform: rotateX(-90deg) rotate(180deg) translateZ(200px);
+  -moz-transform: rotateX(-90deg) rotate(180deg) translateZ(200px);
+  transform: rotateX(-90deg) rotate(180deg) translateZ(200px);
+}
+
+</style>
 <script type="text/javascript">
 
   /*function onLoad() {
@@ -72,7 +145,7 @@ var renderer = null,
 		{
 			cube.rotation.y -= 0.01;
 		}
-			
+			cube.rotation.y -= 0.01;
 		// Ask for another frame
     	requestAnimationFrame(run);	
 	}
@@ -100,12 +173,98 @@ var renderer = null,
 	</div>
 	<div class="col-md-8">
 	
-	<div id="container" style="width:500px; height:400px; background-color:#000000">
+	<body class="experiment">
+    <div class="wrapper">
+        <small>
+           <i class="fa fa-chevron-left"></i> <i class="fa fa-keyboard-o"></i> USE ARROW KEYS <i class="fa fa-chevron-right"></i>
+        </small>
+<div id="experiment">
+    <div id="cube">
+        <div class="face one">
+            <h3>Porfolio:</h3>
+<a href="http://tilapya-11303.herokuapp.com/" target="_blank">http://tilapya-11303.herokuapp.com/</a>
+ 
+        </div>
+        <div class="face two">
+           <i class="fa fa-keyboard-o"></i> Up, down, left, right
+        </div>
+        <div class="face three">
+        <h4>Javascript</h4>
+<a href="" target="_blank">https://github.com/rgarro/Route32</a>
+<a href="" target="_blank">https://github.com/rgarro/PacPreloader</a>
+ 
+
+ 
+         
+		</div>
+        <div class="face four">
+            <h4>Ruby</h4>
+<a href="" target="_blank">https://github.com/rgarro/SportsData_Nascar</a>
+ 
+<h4>ActionScript</h4>
+<a href="" target="_blank">https://github.com/rgarro/Odessa_Defender</a>   
+        </div>
+        <div class="face five">
+            <h4>PHP</h4>
+<a href="" target="_blank">https://github.com/rgarro/Wachico</a>
+<a href="" target="_blank">https://github.com/rgarro/miniVan</a>
+        </div>
+        <div class="face six">
+            <img src="images/sonic.gif" />
+        </div>
+    </div>
+</div>
+
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="js/experiment.js"></script>
+</body>
 
     </div>
 </div>
 <script>
+var props = 'transform WebkitTransform MozTransform OTransform msTransform'.split(' '),
+    prop,
+    el = document.createElement('div');
+
+for(var i = 0, l = props.length; i < l; i++) {
+    if(typeof el.style[props[i]] !== "undefined") {
+        prop = props[i];
+        break;
+    }
+}
+
+var xAngle = 0, yAngle = 0;
+
+window.setTimeout(function(){
+	yAngle -= 90;
+	document.getElementById('cube').style[prop] = "rotateX("+xAngle+"deg) rotateY("+yAngle+"deg)";
+},4000);
+
+$('body').keydown(function(evt) {
+    switch(evt.keyCode) {
+        case 37: // left
+            yAngle -= 90;
+            break;
+
+        case 38: // up
+            xAngle += 90;
+            evt.preventDefault();
+            break;
+
+        case 39: // right
+            yAngle += 90;
+            break;
+
+        case 40: // down
+            xAngle -= 90;
+            evt.preventDefault();
+            break;
+    };
+    document.getElementById('cube').style[prop] = "rotateX("+xAngle+"deg) rotateY("+yAngle+"deg)";
+});
+
 $(document).ready(function(){
-onLoad();
+//onLoad();
 });
 </script>
