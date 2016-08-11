@@ -1,90 +1,18 @@
-<style>
-#experiment {
-  -webkit-perspective: 800px;
-  -webkit-perspective-origin: 50% 200px;
-  -moz-perspective: 800px;
-  -moz-perspective-origin: 50% 200px;
-  perspective: 800px;
-  perspective-origin: 50% 200px;
-}
 
-#cube {
-  position: relative;
-  margin: 100px auto;
-  height: 400px;
-  width: 400px;
-  -webkit-transition: -webkit-transform 2s linear;
-  -webkit-transform-style: preserve-3d;
-  -moz-transition: -moz-transform 2s linear;
-  -moz-transform-style: preserve-3d;
-  transition: transform 2s linear;
-  transform-style: preserve-3d;
-}
-
-.face {
-  position: absolute;
-  height: 360px;
-  width: 360px;
-  padding: 20px;
-  background-color: rgba(50, 50, 50, 0.7);
-  font-size: 27px;
-  line-height: 1em;
-  color: #fff;
-  border: 1px solid #555;
-  border-radius: 3px;
-}
-
-#cube .one  {
-  -webkit-transform: rotateX(90deg) translateZ(200px);
-  -moz-transform: rotateX(90deg) translateZ(200px);
-  transform: rotateX(90deg) translateZ(200px);
-}
-
-#cube .two {
-  -webkit-transform: translateZ(200px);
-  -moz-transform: translateZ(200px);
-  transform: translateZ(200px);
-}
-
-#cube .three {
-  -webkit-transform: rotateY(90deg) translateZ(200px);
-  -moz-transform: rotateY(90deg) translateZ(200px);
-  transform: rotateY(90deg) translateZ(200px);
-}
-
-#cube .four {
-  -webkit-transform: rotateY(180deg) translateZ(200px);
-  -moz-transform: rotateY(180deg) translateZ(200px);
-  transform: rotateY(180deg) translateZ(200px);
-}
-
-#cube .five {
-  -webkit-transform: rotateY(-90deg) translateZ(200px);
-  -moz-transform: rotateY(-90deg) translateZ(200px);
-  transform: rotateY(-90deg) translateZ(200px);
-}
-
-#cube .six {
-  -webkit-transform: rotateX(-90deg) rotate(180deg) translateZ(200px);
-  -moz-transform: rotateX(-90deg) rotate(180deg) translateZ(200px);
-  transform: rotateX(-90deg) rotate(180deg) translateZ(200px);
-}
-
-</style>
 <script type="text/javascript">
 
   /*function onLoad() {
 	var game = new example22("container");
-console.log(game);	
-	game.play();	
+console.log(game);
+	game.play();
 	}*/
-	
-var renderer = null, 
-		scene = null, 
+
+var renderer = null,
+		scene = null,
 		camera = null,
 		cube = null,
 		animating = false;
-	
+
 	function onLoad()
 	{
 		// Grab our container div
@@ -111,7 +39,7 @@ var renderer = null,
         // First, create the texture map
         var mapUrl = "/img/redHare.png";
         var map = THREE.ImageUtils.loadTexture(mapUrl);
-        
+
         // Now, create a Phong material to show shading; pass in the map
         var material = new THREE.MeshPhongMaterial({ map: map });
 
@@ -147,22 +75,22 @@ var renderer = null,
 		}
 			cube.rotation.y -= 0.01;
 		// Ask for another frame
-    	requestAnimationFrame(run);	
+    	requestAnimationFrame(run);
 	}
 
 	function addMouseHandler()
 	{
 		var dom = renderer.domElement;
-		
+
 		dom.addEventListener( 'mouseup', onMouseUp, false);
 	}
-	
+
 	function onMouseUp	(event)
 	{
 	    event.preventDefault();
 
 	    animating = !animating;
-	}	
+	}
 
 </script>
 <div class="row">
@@ -175,56 +103,50 @@ var renderer = null,
 		</div>
 	</div>
 	<div class="col-md-8">
-	
-	<body class="experiment">
-    <div class="wrapper">
-<div id="experiment">
-    <div id="cube">
-        <div class="face one">
-            
-<a href="http://tilapya-11303.herokuapp.com/" target="_blank"> <i class="fa fa-cubes"></i> Porfolio</a>
- 
-        </div>
-        <div class="face two">
-		   <small><i class="fa fa-fort-awesome"></i> expect(hook).toBe(bite); </small>
-		   <br>
-		   <br>
-		   <img class="img-thumbnail" src="/img/betafish.jpg" /><br><br>
-		   <i class="fa fa-apple"></i> <i class="fa fa-linux"></i> <i class="fa fa-css3"></i> <i class="fa fa-html5"></i> <i class="fa fa-github"></i> <i class="fa fa-drupal"></i> <i class="fa fa-rebel"></i> <i class="fa fa-database"></i>
-        </div>
-        <div class="face three">
-        <h4>Javascript</h4>
-<a href="https://github.com/rgarro/Route32" target="_blank"><i class="fa fa-truck"></i> Route32</a>
-<br>
-<a href="https://github.com/rgarro/PacPreloader" target="_blank"><i class="fa fa-futbol-o"></i> PacPreloader</a>
- 
-		</div>
-        <div class="face four">
-            <h4>Ruby</h4>
-<a href="https://github.com/rgarro/SportsData_Nascar" target="_blank"><i class="fa fa-car"></i> SportsData_Nascar</a>
- <br>
-<h4>ActionScript</h4>
-<a href="https://github.com/rgarro/Odessa_Defender" target="_blank"><i class="fa fa-fighter-jet"></i> Odessa_Defender</a>   
-        </div>
-        <div class="face five">
-            <h4>PHP</h4>
-<a href="https://github.com/rgarro/Wachico" target="_blank"><i class="fa fa-code"></i> Wachico</a>
-<br>
-<a href="https://github.com/rgarro/miniVan" target="_blank"><i class="fa fa-code"></i> miniVan</a>
-        </div>
-        <div class="face six">
-           
-			<a href="https://www.linkedin.com/in/rolando-garro-5b90a5a3" target="_blank"><i class="fa fa-linkedin-square"></i></a>
-<a href="https://twitter.com/rolandogarro" target="_blank"><i class="fa fa-twitter-square"></i></a>
-        </div>
-    </div>
-</div>
+    <!-- SWFObject's dynamic embed method replaces this alternative HTML content with Flash content when enough
+                 JavaScript and Flash plug-in support is available. The div is initially hidden so that it doesn't show
+                 when JavaScript is disabled.
+            -->
+            <div id="flashContent">
+                <p>
+                    To view this page ensure that Adobe Flash Player version
+                    10.1.0 or greater is installed.
+                </p>
+                <script type="text/javascript">
+                    var pageHost = ((document.location.protocol == "https:") ? "https://" : "http://");
+                    document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='"
+                                    + pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" );
+                </script>
+            </div>
 
-    </div>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    <script src="js/experiment.js"></script>
-</body>
-
+            <noscript>
+                <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="100%" height="100%" id="tresdb">
+                    <param name="movie" value="Sok.swf" />
+                    <param name="quality" value="high" />
+                    <param name="bgcolor" value="#ffffff" />
+                    <param name="allowScriptAccess" value="sameDomain" />
+                    <param name="allowFullScreen" value="true" />
+                    <!--[if !IE]>-->
+                    <object type="application/x-shockwave-flash" data="Sok.swf" width="100%" height="100%">
+                        <param name="quality" value="high" />
+                        <param name="bgcolor" value="#ffffff" />
+                        <param name="allowScriptAccess" value="sameDomain" />
+                        <param name="allowFullScreen" value="true" />
+                    <!--<![endif]-->
+                    <!--[if gte IE 6]>-->
+                        <p>
+                            Either scripts and active content are not permitted to run or Adobe Flash Player version
+                            10.1.0 or greater is not installed.
+                        </p>
+                    <!--<![endif]-->cd
+                        <a href="http://www.adobe.com/go/getflashplayer">
+                            <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash Player" />
+                        </a>
+                    <!--[if !IE]>-->
+                    </object>
+                    <!--<![endif]-->
+                </object>
+            </noscript>
     </div>
 </div>
 <script>
